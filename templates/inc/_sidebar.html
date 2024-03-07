@@ -1,0 +1,17 @@
+{% load news_tags %}
+
+{% comment %} 
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+      The current link item
+    </a>
+    {% get_list_categories as categories %}
+    {% for cat in categories  %}
+      <a href="{% url 'category' cat.id %} " class="list-group-item list-group-item-action">{{cat.title}}</a>
+    {% endfor %}
+</div>
+
+<br>
+{% endcomment %}
+
+{% show_categories %} 
