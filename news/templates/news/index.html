@@ -28,7 +28,7 @@
 
           <div class="media-body">
             <h5 class="card-title {% cycle 'text-danger' 'text-success'%}">{{item.title}}</h5>
-            <p class="card-text">{{item.content | linebreaksbr | truncatewords:77 }} </p>
+            <p class="card-text">{{item.content |safe | linebreaksbr | truncatewords:77 }} </p>
             <a href="{{item.get_absolute_url}}" class="btn btn-primary">Read more ...</a>
           </div>
         </div>

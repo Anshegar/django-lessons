@@ -22,11 +22,18 @@ from django.urls import path, include
 #from news.views import index,test
 
 urlpatterns = [
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
     path('', include('news.urls')),
+    path('captcha/', include('captcha.urls')),
 
 ]
 
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    
+    from django.urls import include, path
+    urlpatterns = [
+        path("__debug__/", include("debug_toolbar.urls")),
+    ] + urlpatterns

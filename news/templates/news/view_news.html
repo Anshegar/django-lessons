@@ -18,19 +18,19 @@
     </div>
     <div class="card-body">
 
-        <div class="media">
 
-          {% if news_item.photo %}
-          <img src="{{news_item.photo.url}}" alt="" width = "150" class = "me-3 float-start">
-          {% else %}
-          Ops... no img
-          {% endif %}
 
-          <div class="media-body">
+            {% if news_item.photo %}
+            <img src="{{news_item.photo.url}}" alt="" width = "150" class = "me-3 float-start">
+            {% else %}
+            Ops... no img
+            {% endif %}
+
+
             <h5 class="card-title {% cycle 'text-danger' 'text-success'%}">{{news_item.title}}</h5>
             <p class="card-text">{{news_item.content | linebreaksbr  }} </p>
-          </div>
-        </div>
+
+
 
     </div>
     <div class="card-footer text-body-secondary">

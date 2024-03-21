@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{title}} :: {{ block.super }}
+{% endblock  %}
+
+{% block sidebar %}
+{% include "inc/_sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+
+<form action="{% url 'test' %}" method = "POST">
+{% csrf_token %}
+{{ form.as_p }} 
+<button type="submit" class = "btn btn-primary btn-block"> Отправка Письма! </button>
+</form>
+
+
+{% for name in page_obj.object_list %}
+    <p>{{name}}</p>
+{% endfor %}
+
+{% endblock %}
