@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse, reverse_lazy
-
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -14,6 +14,7 @@ class News(models.Model):
     is_published= models.BooleanField(default = True, verbose_name = 'Опубликовано')
     category = models.ForeignKey('Category', on_delete = models.PROTECT,  verbose_name = 'Категория')
     views = models.IntegerField(default = 0)
+    user = models.ForeignKey(User, verbose_name = 'Пользователь', on_delete = models.CASCADE)
 
 
     def get_absolute_url(self):
