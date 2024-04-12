@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'rest_framework_simplejwt',
+    'django_celery_results',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -314,5 +316,22 @@ SIMPLE_JWT = {
 }
 
 
+# Указываем брокер какой БД испотзуем для Очереди 
+# --- если Redis то ещё указываем какая из 16 БД будет использована
+CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
 
+# DB table for celery_results 
+CELERY_RESULT_BACKEND = 'django-db'
 
+# Redis cach for celery results
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+    }
+}
+
+# celery setting.
+CELERY_CACHE_BACKEND = 'default'
+
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
